@@ -1,14 +1,16 @@
 package com.pruebatecnicacampanias.repository;
 
-import com.pruebatecnicacampanias.model.SmsDetalle;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.pruebatecnicacampanias.model.SmsDetalle;
+import com.pruebatecnicacampanias.model.SmsMaestro;
 
 @Repository
-public interface SmsDetalleRepository extends JpaRepository<SmsDetalle,Long> {
+public interface SmsDetalleRepository extends JpaRepository<SmsDetalle, Long> {
 
-    List<SmsDetalle> findBySmsMaestro_Id(Long idMaestro);
+    Page<SmsDetalle> findByMaestro(SmsMaestro maestro, Pageable pageable);
 
 }
